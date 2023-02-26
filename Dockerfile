@@ -16,3 +16,8 @@ RUN curl -LO https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz \
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash \
     && mv kustomize /usr/local/bin/kustomize \
     && chmod +x /usr/local/bin/kustomize
+
+# Install gettext-base (envsubst)
+RUN apt-get update && apt-get install -y gettext-base \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*	
